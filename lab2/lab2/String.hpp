@@ -122,15 +122,15 @@ private:
         int index = 0; // post increment increments the startIndex by 1 more after finding substring, so we need index -1
         const char * startIndex = needle;
         for (int i = 0; *haystack != '\0'; haystack++, i++) {
-            cout << "haystack: " << *haystack << " ";
-            cout << "needle: " << *needle << endl;
+//            cout << "haystack: " << *haystack << " ";
+//            cout << "needle: " << *needle << endl;
             if (*needle == *haystack) {
-                cout << "found a substring" << endl;
+//                cout << "found a substring" << endl;
                 if (*(haystack + 1) == '\0') { return (char *)(haystack - index); } // check if looking for -1 index
                 index++; // start counting
                 needle++;
             } else if (*needle == '\0') { // end of needle
-                cout << "reached end of needle, return pointer to " << *(haystack - index) << endl;
+//                cout << "reached end of needle, return pointer to " << *(haystack - index) << endl;
                 return (char *)(haystack - index);
             } else { // next characters don't match, so reset the needle
                 needle = startIndex;
