@@ -81,7 +81,6 @@ private:
             smaller = lenl < lenr ? *left : *right;
             size = min(lenl, lenr);
         }
-        size = sameSize ? lenl : min(lenl, lenr);
         for (int i = 0; i < size; i++) {
             if (left[i] > right[i]) {
                 return 1;
@@ -90,11 +89,13 @@ private:
             }
         }
         // strings should be equal at this point, if one is longer then the shorter one is returned
-        if (size == lenl) {
+        if (lenl == lenr) {
+            return 0;
+        } else if (lenl < lenr) {
             return -1;
-        } else if (size == lenr) {
+        } else {
             return 1;
-        } else { return 0; }
+        }
     }
     static int strncmp(const char *left, const char *right, int
                        n) {

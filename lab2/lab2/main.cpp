@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include "String.hpp"
+#include <assert.h>
 
 using namespace std;
 
@@ -87,6 +88,35 @@ void test_add_assign() {
     cout << s2;
 }
 
+void test_bool() {
+    cout << endl << "test_bool" << endl;
+    String s("Poppo");
+    String s2("Tsurumu");
+    String s3 = s;
+    cout << s << s3 << endl;
+    cout << boolalpha;
+    
+    cout << (s < s2) << endl;
+    cout << (s2 < s) << endl;
+    assert (s < s2 == true);
+    assert (s2 < s == false);
+    
+    cout << (s == s2) << endl;
+    cout << (s2 == s) << endl;
+    assert (s == s2 == false);
+    assert (s2 == s == false);
+    
+    cout << (s <= s3) << endl;
+    cout << (s3 <= s) << endl;
+    assert (s <= s3 == true);
+    assert (s3 <= s == true);
+    
+    cout << (s >= s3) << endl;
+    cout << (s3 >= s) << endl;
+    assert (s >= s3 == true);
+    assert (s3 >= s == true);
+}
+
 int main()
 {
     test_constructor_and_print();
@@ -98,5 +128,6 @@ int main()
     test_indexOf();
     test_add();
     test_add_assign();
+    test_bool();
     return 0;
 }
