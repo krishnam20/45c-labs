@@ -36,6 +36,7 @@ public:
         char topElement = stack[index];
         stack[index] = NULL;
         index--;
+        cout << topElement;
         return topElement;
     }
 
