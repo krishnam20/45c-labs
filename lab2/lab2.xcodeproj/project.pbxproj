@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3BDA143B1D3DCAFA0036D44A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BDA143A1D3DCAFA0036D44A /* main.cpp */; };
+		3B7666E51D410D1F004CFACA /* string_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B7666E41D410D1F004CFACA /* string_test.cpp */; };
 		3BDA14431D3DCB570036D44A /* String.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BDA14411D3DCB570036D44A /* String.cpp */; };
 /* End PBXBuildFile section */
 
@@ -24,8 +24,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3B7666E41D410D1F004CFACA /* string_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = string_test.cpp; sourceTree = "<group>"; };
 		3BDA14371D3DCAFA0036D44A /* lab2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = lab2; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BDA143A1D3DCAFA0036D44A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		3BDA14411D3DCB570036D44A /* String.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = String.cpp; sourceTree = "<group>"; };
 		3BDA14421D3DCB570036D44A /* String.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = String.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,7 +60,7 @@
 		3BDA14391D3DCAFA0036D44A /* lab2 */ = {
 			isa = PBXGroup;
 			children = (
-				3BDA143A1D3DCAFA0036D44A /* main.cpp */,
+				3B7666E41D410D1F004CFACA /* string_test.cpp */,
 				3BDA14411D3DCB570036D44A /* String.cpp */,
 				3BDA14421D3DCB570036D44A /* String.hpp */,
 			);
@@ -123,8 +123,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B7666E51D410D1F004CFACA /* string_test.cpp in Sources */,
 				3BDA14431D3DCB570036D44A /* String.cpp in Sources */,
-				3BDA143B1D3DCAFA0036D44A /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +245,7 @@
 				3BDA14401D3DCAFA0036D44A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
