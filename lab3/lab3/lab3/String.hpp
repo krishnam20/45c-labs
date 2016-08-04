@@ -9,7 +9,6 @@
 #ifndef String_hpp
 #define String_hpp
 
-#include <stdio.h>
 #include <iostream>
 
 using namespace std;
@@ -40,16 +39,130 @@ public:
     void print(ostream & out);
     void read(istream & in);
     ~String();
+    static int allocations;
 private:
     bool inBounds(int i)
     {
         return i >= 0 && i < strlen(buf);
     }
-    static int strlen(const char *src);
-    static char *strdup(const char *src); // notice this new function
-    // … and any other auxiliary static methods you need
+    static int strlen(const char *src) {
+        int index = 0;
+        for (int i = 0; src[i] != '\0'; i++) {
+            index++;
+        }
+        return index;
+    }
+    static char * strcpy(char *dest, const char *src) {
+        int i = 0;
+        for (; src[i] != '\0'; i++) {
+            dest[i] = src[i];
+        }
+        dest[i] = '\0';
+        return dest;
+    }
+    static char * strcat(char *dest, const char *src) {
+        int startIndex = strlen(dest);
+        int size = strlen(src);
+        for (int i = 0; i < size; i++) {
+            int current = startIndex + i;
+            dest[current] = src[i];
+            dest[current + 1] = '\0'; // terminate with null
+        }
+        return dest;
+    }
+    static char * strchr(const char *str, int c) {
+        int i = 0;
+        for (; str[i] != '\0'; i++) {
+            if (char(c) == str[i]) {
+                return (char *)str+i;
+            }
+        }
+        return NULL;
+    }
+    static char * strstr(const char *haystack, const char
+                         *needle) {
+        if (haystack[0] == '\0') { return (char *)haystack; } // zero length
+        int index = 0; // post increment increments the startIndex by 1 more after finding substring, so we need index -1
+        const char * startIndex = needle;
+        for (int i = 0; *haystack != '\0'; haystack++, i++) {
+            //            cout << "haystack: " << *haystack << " ";
+            //            cout << "needle: " << *needle << endl;
+            if (*needle == *haystack) {
+                //                cout << "found a substring" << endl;
+                if (*(haystack + 1) == '\0') { return (char *)(haystack - index); } // check if looking for -1 index
+                index++; // start counting
+                needle++;
+            } else if (*needle == '\0') { // end of needle
+                //                cout << "reached end of needle, return pointer to " << *(haystack - index) << endl;
+                return (char *)(haystack - index);
+            } else { // next characters don't match, so reset the needle
+                needle = startIndex;
+            }
+        }
+        return NULL; // string not found
+    }
+    static int strcmp(const char *left, const char *right) {
+        int size;
+        int lenl = strlen(left), lenr = strlen(right);
+        bool sameSize = lenl == lenr;
+        char smaller;
+        if (sameSize) {
+            size = lenl;
+        } else {
+            smaller = lenl < lenr ? *left : *right;
+            size = min(lenl, lenr);
+        }
+        for (int i = 0; i < size; i++) {
+            if (left[i] > right[i]) {
+                return 1;
+            } else if (left[i] < right[i]) {
+                return -1;
+            }
+        }
+        // strings should be equal at this point, if one is longer then the shorter one is returned
+        if (lenl == lenr) {
+            return 0;
+        } else if (lenl < lenr) {
+            return -1;
+        } else {
+            return 1;
+        }
+    }
+    static int strncmp(const char *left, const char *right, int
+                       n) {
+        for (; n != 0 && *left != '\0' && *right != '\0'; n--, left++, right++) {
+            if (*left > *right) {
+                return 1;
+            } else if (*right > *left) {
+                return -1;
+            }
+        }
+        return 0;
+    }
+    static char *strdup(const char *src) {
+        int len = strlen(src);
+        char *newbuf;
+        newbuf = new_char_array(len + 1);
+        for (int i = 0; i < len; i++) {
+            newbuf[i] = src[i];
+            newbuf[i+1] = '\0';
+        }
+        return newbuf;
+    }
     char * buf; // base of array for the characters in this string
-    // DO NOT add a length data member!! Use the null terminator.
+    
+    static char * new_char_array(int n_bytes) {
+        allocations++;
+        return new char[n_bytes];
+    }
+    
+    static void delete_char_array(char *p) {
+        if (allocations == 0) {
+            throw "no allocations";
+        }
+        allocations--;
+        delete[] p;
+    }
 };
 
 ostream & operator << (ostream & out, String str);
