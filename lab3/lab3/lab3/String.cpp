@@ -84,11 +84,12 @@ String String::operator + (const String s) {
     String result;
     delete_char_array(result.buf);
     result.buf = merged;
+    result.buf = strcat(result.buf, s.buf);
     return result;
 }
 
 String String::operator += (const String s) {
-    return strcat(buf, s.buf);
+   return strcat(buf,s.buf);
 }
 
 void String::print(ostream & out) {
