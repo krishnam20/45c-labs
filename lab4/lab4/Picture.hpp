@@ -9,6 +9,15 @@
 #ifndef Picture_hpp
 #define Picture_hpp
 
-#include <stdio.h>
+struct Picture {
+private:
+public:
+    Picture(Shape shape) {}
+    Picture *link;
+    void add(Shape *sp);
+    void drawAll();
+    double totalArea();
+    ~Picture();
+};
 
 #endif /* Picture_hpp */

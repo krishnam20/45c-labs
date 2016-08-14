@@ -14,13 +14,21 @@ using namespace std;
 
 class Square: public Shape {
 private:
-    double side;
+    int side;
 public:
-    Square(int x, int y, double side): Shape(x, y, "Square") {
+    Square(int x, int y, int side): Shape(x, y, "Square") {
         side = side;
     }
     double area() override {
         return side * side;
+    }
+    void draw() override {
+        for (int i = 0; i < side; i++) {
+            cout << side;
+            for (int j = 0; j < side; j++) {
+                cout << "*";
+            }
+        }
     }
 };
 

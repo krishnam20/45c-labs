@@ -14,7 +14,7 @@
 using namespace std;
 
 class Shape {
-private:
+protected:
     int centerX;
     int centerY;
     string name;
@@ -26,7 +26,7 @@ public:
     }
     virtual double area() = 0;
     virtual void draw() = 0;
-    ~Shape();
+    ~Shape() {}
 };
 
 #endif /* Shape_hpp */
