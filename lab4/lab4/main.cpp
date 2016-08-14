@@ -22,17 +22,29 @@ void print(string str) {
     cout << str << endl;
 }
 
+void triangle(int height, int base) {
+    Triangle triangle(0, 0, height, base);
+    cout << "Area is " << triangle.area() << endl;
+    triangle.draw();
+}
+
 void square() {
-    Shape *shape;
     Square square(0, 0, 5);
-    cout << square.area() << endl;
-//    shape = &square;
-//    cout << shape->area() << endl;
+    cout << "Area is " << square.area() << endl;
+    square.draw();
+}
+
+void rectangle() {
+    Rectangle rect(0, 0, 4, 8);
+    cout << "Area is " << rect.area() << endl;
+    rect.draw();
 }
 
 int main(int argc, const char * argv[]) {
     print("FirstTriangle: height=5, base=5");
+    triangle(5, 5);
     print("SecondTriangle: height=4, base=3");
+    triangle(4, 3);
     print("FirstCircle: radius = 5");
     print("SecondCircle: radius = 10");
     
@@ -41,6 +53,7 @@ int main(int argc, const char * argv[]) {
     
     print("SecondSquare: side = 10");
     print("FirstRectangle: height = 4 width=8");
+    rectangle();
     print("SecondRectangle: height=8 width=4");
     return 0;
 }
