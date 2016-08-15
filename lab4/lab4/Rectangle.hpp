@@ -28,7 +28,7 @@ public:
     void draw() override {
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                cout << "枫 ";
+                cout << "风 ";
             }
             cout << endl;
         }

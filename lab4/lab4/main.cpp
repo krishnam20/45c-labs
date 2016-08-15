@@ -34,6 +34,12 @@ void square() {
     square.draw();
 }
 
+void circle() {
+    Circle circle(0, 0, 5);
+    cout << "Area is " << circle.area() << endl;
+    circle.draw();
+}
+
 void rectangle() {
     Rectangle rect(0, 0, 4, 8);
     cout << "Area is " << rect.area() << endl;
@@ -42,18 +48,20 @@ void rectangle() {
 
 int main(int argc, const char * argv[]) {
     print("FirstTriangle: height=5, base=5");
-    triangle(5, 5);
+    //triangle(5, 5);
     print("SecondTriangle: height=4, base=3");
-    triangle(4, 3);
+    //triangle(4, 3);
     print("FirstCircle: radius = 5");
+    circle();
     print("SecondCircle: radius = 10");
     
-    print("FirstSquare: side=5");
-    square();
     
-    print("SecondSquare: side = 10");
-    print("FirstRectangle: height = 4 width=8");
-    rectangle();
-    print("SecondRectangle: height=8 width=4");
+//    print("FirstSquare: side=5");
+//    square();
+//    
+//    print("SecondSquare: side = 10");
+//    print("FirstRectangle: height = 4 width=8");
+//    rectangle();
+//    print("SecondRectangle: height=8 width=4");
     return 0;
 }

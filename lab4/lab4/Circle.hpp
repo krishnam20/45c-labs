@@ -10,16 +10,38 @@
 #define Circle_hpp
 
 #define MATH_PI 3.1415926535897
+#include <math.h>
 
 class Circle: public Shape {
 private:
     double radius;
-public:
-    Circle(int x, int y, double radius): Shape(x, y, "Square") {
-        radius = radius;
+    static int square(int i) {
+        return i * i;
     }
+public:
+    Circle(int x, int y, double radius):
+    Shape(x, y, "Circle"),
+    radius(radius) {
+        centerX = radius;
+    }
+    
     double area() override {
         return radius * radius * MATH_PI;
+    }
+    
+    void draw() override {
+        string earthVillage = "土";
+        for (int y = 0; y <= radius * 2; y++) { // y
+            for (int j = 0; j <= radius * 2; j++) { // x
+                int distanceFromCenter = sqrt(square(radius) - square(radius - y));
+                if (j > radius - distanceFromCenter - 0.5 && j < radius + distanceFromCenter + 0.5) {
+                    cout << "*";
+                    } else { cout << " ";
+                }
+            }
+            cout << endl;
+        }
+
     }
 };
 

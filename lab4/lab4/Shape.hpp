@@ -15,14 +15,13 @@ using namespace std;
 
 class Shape {
 protected:
-    int centerX;
-    int centerY;
     string name;
 public:
-    Shape(int centerX, int centerY, string name) {
-        centerX = centerX;
-        centerY = centerY;
-        name = name;
+    int centerX;
+    int centerY;
+    Shape(int x, int y, string name): name(name) {
+        centerX = x;
+        centerY = y;
         cout << "Created " << name;
     }
     virtual double area() = 0;
